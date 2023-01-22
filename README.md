@@ -1,2 +1,2 @@
 # react-design-patterns
-Exercises of React Design Patterns in LinkedInLearning courses
+Exercises of React Design Patterns from LinkedInLearning courses
