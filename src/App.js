@@ -3,6 +3,7 @@ import { SmallPersonListItem } from "./people/SmallPersonListItem";
 import { LargePersonListItem } from "./people/LargePersonListItem";
 import { SmallProductsListItem } from "./products/SmallProductsListItem";
 import { LargeProductsListItem } from "./products/LargeProductsListItem";
+import { NumberedList } from "./NumberedList";
 
 const people = [{
   name: 'Sara',
@@ -50,7 +51,7 @@ function App() {
         resourceName="person"
         itemComponent={SmallPersonListItem}
       />
-      <RegularList 
+      <NumberedList 
         items={people}
         resourceName="person"
         itemComponent={LargePersonListItem}
@@ -60,7 +61,7 @@ function App() {
         resourceName="product"
         itemComponent={SmallProductsListItem}
       />
-       <RegularList 
+       <NumberedList 
         items={products}
         resourceName="product"
         itemComponent={LargeProductsListItem}
