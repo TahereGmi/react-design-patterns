@@ -1,71 +1,50 @@
-import { RegularList } from "./RegularList";
-import { SmallPersonListItem } from "./people/SmallPersonListItem";
-import { LargePersonListItem } from "./people/LargePersonListItem";
-import { SmallProductsListItem } from "./products/SmallProductsListItem";
-import { LargeProductsListItem } from "./products/LargeProductsListItem";
-import { NumberedList } from "./NumberedList";
+import { CurrentUserLoader } from "./CurrentUserLoader"
+import { UserLoader } from "./UserLoader"
+import { UserInfo } from "./UserInfo"
+import { ResourceLoader } from "./ResourceLoader"
+import { ProductInfo } from './ProductInfo'
+import { DataSource } from './DataSource'
+import axios from 'axios'
 
-const people = [{
-  name: 'Sara',
-  age: '29',
-  hairColor: 'brown',
-  hobbies: ['sport', 'theater']
-},
-{
-  name: 'Jane',
-  age: '32',
-  hairColor: 'black',
-  hobbies: ['swimming', 'party']
-},
-{
-  name: 'Jak',
-  age: '38',
-  hairColor: 'blond',
-  hobbies: [, 'books']
-}]
 
-const products = [{
-  name: 'Tv',
-  price: '200$',
-  description: 'LED Screen, a great sale',
-  rating: 4.5
-},
-{
-  name: 'Runnig shoes',
-  price: '100$',
-  description: 'Amazing running experience!',
-  rating: 4.2
-},
-{
-  name: 'Own',
-  price: '60$',
-  description: 'Cooking problems finished! Be your own chef!',
-  rating: 3.8
-}]
+const getServerData = url => async () => {
+  const response = await axios.get(url)
+  return response.data
+}
+
+const getLocalStorageData = key => () => {
+  return localStorage.getItem(key)
+}
+
+const Text = ({ message }) => {
+  <h1>{message}</h1>
+}
 
 function App() {
   return (
     <>
-      <RegularList 
-        items={people}
-        resourceName="person"
-        itemComponent={SmallPersonListItem}
-      />
-      <NumberedList 
-        items={people}
-        resourceName="person"
-        itemComponent={LargePersonListItem}
-      />
-      <RegularList 
-        items={products}
-        resourceName="product"
-        itemComponent={SmallProductsListItem}
-      />
-       <NumberedList 
-        items={products}
-        resourceName="product"
-        itemComponent={LargeProductsListItem}
-      />
+    <h1>CurrentUserLoader</h1>
+    <CurrentUserLoader>
+      <UserInfo />
+    </CurrentUserLoader>
+    <h1>UserLoader</h1>
+    <UserLoader userId={'987'}>
+      <UserInfo />
+    </UserLoader>
+    <h1>ResourceLoader</h1>
+    <ResourceLoader resourceUrl={'/users/123'} resourceName={'user'}>
+      <UserInfo />
+    </ResourceLoader>
+    <ResourceLoader resourceUrl={'/products/1234'} resourceName={'product'}>
+      <ProductInfo />
+    </ResourceLoader>
+    <h1>DataSource</h1>
+    <DataSource getDataFunc={getServerData('/users/123')} resourceName="user">
+      <UserInfo/>
+    </DataSource>
+    <DataSource getDataFunc={getLocalStorageData('message')} resourceName="user">
+      <Text />
+    </DataSource>
     </>
   );
 }
