@@ -1,0 +1,20 @@
+import React from "react";
+
+export const UncontrolledForm = () => {
+    const nameInput = React.createRef()
+    const ageInput = React.createRef()
+    const hairColorInput = React.createRef()
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        console.log(nameInput.current.value, ageInput.current.value, hairColorInput.current.value)
+    }
+    return (
+        <form onSubmit={handleSubmit}>
+            <input name="name" type="text" placeholder="Name" ref={nameInput}/>
+            <input name="age" type="number" placeholder="Age" ref={ageInput}/>
+            <input name="hairColor" type="text" placeholder="Hair color" ref={hairColorInput}/>
+            <input type="submit" value="submit"/>
+        </form>
+    )
+}
