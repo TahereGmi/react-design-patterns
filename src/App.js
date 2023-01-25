@@ -1,23 +1,34 @@
-import { useState } from "react";
-import { ControlledModal } from "./ControlledModal";
-
+import { UncontrolledOnboardingFlow } from "./UncotrolledOnboardingFlow";
+ 
 function App() {
-  const [shouldShowModal, setShouldShowModal] = useState(false)
-  return (
+  const StepOne = ({goToNext}) => (
     <>
-      <ControlledModal 
-        shouldShow={shouldShowModal}
-        onRequestClose={() => {
-          alert('Are you sure?')
-          setShouldShowModal(false) 
-        }}
-      >
-        <h1>Hello!</h1>
-      </ControlledModal>
-      <button onClick={() => setShouldShowModal(true)}>
-        {shouldShowModal ? 'Hide modal' : 'Show Modal'}
-      </button>
+    <h1>Step 1</h1>
+    <button onClick={() => goToNext({ name: 'Jon Doe' })}>Next</button>
     </>
+  )
+  const StepTwo = ({goToNext}) => (
+    <>
+    <h1>Step 2</h1>
+    <button onClick={() => goToNext({ age: '60' })}>Next</button>
+    </>
+  )
+  const StepThree = ({goToNext}) => (
+    <>
+    <h1>Step 3</h1>
+    <button onClick={() => goToNext({ hariColor: 'Brown' })}>Next</button>
+    </>
+  )
+
+  return (
+    <UncontrolledOnboardingFlow onFinish={(data) => {
+      console.log('data', data)
+      alert('Onboarding Completed!')
+    }}>
+      <StepOne />
+      <StepTwo />
+      <StepThree />
+    </UncontrolledOnboardingFlow>
   );
 }
 
