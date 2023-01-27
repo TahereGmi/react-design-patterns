@@ -1,6 +1,10 @@
-import { useUser } from "./useUser"
+import { useResource } from "./useResource"
+
 export const UserInfo = ({ userId }) => {
-    const user = useUser(userId)
+    // with useResource custom hook we can load any data we want
+    const user = useResource(`/users/${userId}`)
+    // another example
+    // const product = useResource(`/products/${productId}`)
 
     const { name, age, hairColor, hobbies } = user || {}
 
