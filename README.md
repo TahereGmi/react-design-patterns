@@ -21,6 +21,8 @@ Why we want to create HOCs?
 - They used for sharing complex behavior between multiple components (much like container components)
 - Adding extra functionality to existing components.
 
-5 - `Custom hooks patterns`
+5 - `Custom hooks patterns`: Special hooks that we define ourselves, and that usually combine the functionality of one or more existing React hooks like “useState” or “useEffect”.
+custom hooks used for:
+- Sharing complex behavior between multiple components (much like with HOCs and container components)
 
 6 - `Functional programming`
