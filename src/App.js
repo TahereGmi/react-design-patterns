@@ -1,11 +1,13 @@
 import { printProps } from "./printProps"
 import { UserInfo } from './UserInfo'
+import { withUser } from "./withUser";
 
-const UserInfoWrapper = printProps(UserInfo)
+const UserInfoWithLoader = withUser(UserInfo, '123')
+
 function App() {
   return (
-    // In printProps (Higher Order Component) we have these props in console.log
-    <UserInfoWrapper a={1} b="Shaun" />
+    // Loading data in withUser (Higher Order Component)
+    <UserInfoWithLoader />
   );
 }
 
