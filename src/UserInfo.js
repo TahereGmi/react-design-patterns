@@ -1,9 +1,9 @@
-import { useCurrentUser } from "./useCurrentUser"
-export const UserInfo = () => {
-    const user = useCurrentUser()
+import { useUser } from "./useUser"
+export const UserInfo = ({ userId }) => {
+    const user = useUser(userId)
 
     const { name, age, hairColor, hobbies } = user || {}
-    
+
     return user ? (
         <>
         <h3>{name}</h3>
