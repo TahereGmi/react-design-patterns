@@ -1,9 +1,9 @@
-import { UserInfoForm } from './UserInfoForm'
+import { UserInfo } from './UserInfo'
 
 
 function App() {
   return (
-    <UserInfoForm />
+    <UserInfo />
   );
 }
 
