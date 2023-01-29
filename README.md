@@ -25,4 +25,15 @@ Why we want to create HOCs?
 custom hooks used for:
 - Sharing complex behavior between multiple components (much like with HOCs and container components)
 
-6 - `Functional programming`
+6 - `Functional programming`:
+A method of organizing code in the a way that:
+1. Minimizes mutation and state change
+2. Keeps functions independent of external data (pure functions)
+3. Treats functions as first class citizens
+    - Applications of FP in React:
+    - Controlled components
+    - Function components
+    - Higher-order Components (their functions return another components)
+    - Recursive components : Components that refers themselves inside the body of component
+    - Partially applied components
+    - Component Composition
