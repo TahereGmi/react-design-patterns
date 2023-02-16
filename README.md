@@ -37,3 +37,6 @@ A method of organizing code in the a way that:
     - Recursive components : Components that refers themselves inside the body of component
     - Partially applied components
     - Component Composition
+
+7 - `Conditional Rendering`: In the process of writing React components, the need often arises to render a certain JSX code based on the state. This is achieved through conditional rendering and it's very useful as it allows you to create distinct components based on your needs and then render only the ones that are required by the application.
+- For instance, conditional rendering can be used to display different messages to the user based on the login status of the user. The message will be subject to the value of the prop *isLoggedIn*.
